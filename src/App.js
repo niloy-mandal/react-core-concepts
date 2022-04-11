@@ -1,25 +1,48 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Counter></Counter>
     </div>
   );
 }
 
+function Counter() {
+  const [count, setCount] = useState(87);
+  const handleIncrease = () => {
+    const newCount = count + 1;
+    setCount(newCount);
+  }
+  return (
+    <div>
+      <h1>Count: {count}</h1>
+      <button onClick={handleIncrease}>Increase</button>
+    </div>
+  )
+}
+
+function Product(props) {
+  const productStyle = {
+    border: '2px solid yellow', borderRadius: '15px'
+  }
+  return (
+    <div className="product" style={productStyle}>
+      <h2>Name: {props.name}</h2>
+      <h4>Price: {props.price}</h4>
+    </div>
+  )
+}
+
 export default App;
+
+// const products = [
+//   { name: 'mobile', price: 15000 },
+//   { name: 'camera', price: 55000 },
+//   { name: 'laptop', price: 155000 },
+//   { name: 'watch', price: 5000 },
+//   { name: 'shoe', price: 1500 },
+// ]
